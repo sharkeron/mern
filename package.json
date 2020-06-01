@@ -2,9 +2,9 @@
   "name": "mern",
   "version": "1.0.0",
   "description": "MERN application. Service for shortening links.",
-  "main": "app.ts",
+  "main": "server/app.ts",
   "scripts": {
-    "server": "nodemon app.ts",
+    "server": "nodemon server/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "node-config-ts"
   },

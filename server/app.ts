@@ -5,6 +5,7 @@ const {config} = require('node-config-ts');
 
 const PORT: number = config.port || 5000;
 const MONGO_URI: string = config.mongoUri;
+
 const app: Express = express();
 
 async function startConnect() {
