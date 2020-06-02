@@ -1,7 +1,9 @@
-import authRoute from '@server/routes/auth.route';
+import cors from 'cors';
 import express, {Express} from 'express';
+import helmet from 'helmet';
 import 'module-alias/register';
 import mongoose from 'mongoose';
+import authRoute from './routes/auth.route';
 
 const {config} = require('node-config-ts');
 
@@ -9,6 +11,10 @@ const PORT: number = config.port || 5000;
 const MONGO_URI: string = config.mongoUri;
 
 const app: Express = express();
+
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
 
 app.use('/api/auth', authRoute);
 

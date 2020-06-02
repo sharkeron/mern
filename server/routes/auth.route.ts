@@ -1,6 +1,6 @@
-import {signInController, signUpController} from '@server/controllers/auth.controller';
 import {IRouter, Router} from 'express';
 import {check} from 'express-validator';
+import {signInController, signUpController} from '../controllers/auth.controller';
 
 const authRoute: IRouter = Router();
 

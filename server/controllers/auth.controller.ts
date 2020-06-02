@@ -1,16 +1,17 @@
-import User from '@server/models/User';
-import {errorHandler500} from '@server/utils/errorHandler';
 import {compare, hash} from 'bcryptjs';
 import {Request, Response} from 'express';
 import {validationResult} from 'express-validator';
 import {sign} from 'jsonwebtoken';
-import {config} from 'node-config-ts';
+import User from '../models/User';
+import {errorHandler500} from '../utils/errorHandler';
 
 interface AuthRequestBodyInterface {
    email: string;
    password: string;
    rememberMe?: boolean;
 }
+
+const {config} = require('node-config-ts');
 
 export const signUpController = async (req: Request, res: Response) => {
    try {

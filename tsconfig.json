@@ -16,14 +16,6 @@
       "noFallthroughCasesInSwitch": true,
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,
-      "baseUrl": ".",
-      "paths": {
-         "@server/*": [
-            "server/*"
-         ],
-         "@client/*": [
-            "./client/*"
-         ]
-      }
+      "baseUrl": "./server"
    }
 }
