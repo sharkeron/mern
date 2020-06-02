@@ -15,15 +15,7 @@ const {config} = require('node-config-ts');
 
 export const signUpController = async (req: Request, res: Response) => {
    try {
-      const errors = validationResult(req);
-
-      if (!errors.isEmpty()) {
-         res.status(400)
-            .json({
-                     errors: errors.array(),
-                     message: 'Invalid data',
-                  });
-
+      if (isAuthValiddationErrorsExist(req, res)) {
          return;
       }
 
@@ -56,15 +48,7 @@ export const signUpController = async (req: Request, res: Response) => {
 
 export const signInController = async (req: Request, res: Response) => {
    try {
-      const errors = validationResult(req);
-
-      if (!errors.isEmpty()) {
-         res.status(400)
-            .json({
-                     errors: errors.array(),
-                     message: 'Invalid data',
-                  });
-
+      if (isAuthValiddationErrorsExist(req, res)) {
          return;
       }
 
@@ -103,3 +87,19 @@ export const signInController = async (req: Request, res: Response) => {
       errorHandler500(res);
    }
 };
+
+function isAuthValiddationErrorsExist(req: Request, res: Response) {
+   const errors = validationResult(req);
+
+   if (!errors.isEmpty()) {
+      res.status(400)
+         .json({
+                  errors: errors.array(),
+                  message: 'Invalid data',
+               });
+
+      return true;
+   }
+
+   return false;
+}
