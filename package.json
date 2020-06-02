@@ -5,7 +5,8 @@
    "main": "server/app.ts",
    "scripts": {
       "server": "nodemon server/app.ts",
-      "test": "echo \"Error: no test specified\" && exit 1",
+      "client": "npm run start --prefix client",
+      "dev": "concurrently \"npm run server\" \"npm run client\"",
       "postinstall": "node-config-ts"
    },
    "keywords": [
@@ -25,8 +26,10 @@
       "express-validator": "^6.5.0",
       "helmet": "^3.22.0",
       "jsonwebtoken": "^8.5.1",
+      "materialize-css": "^1.0.0-rc.2",
       "mongoose": "^5.9.16",
-      "node-config-ts": "^3.0.4"
+      "node-config-ts": "^3.0.4",
+      "react-router-dom": "^5.2.0"
    },
    "devDependencies": {
       "@types/bcryptjs": "^2.4.2",
@@ -36,6 +39,7 @@
       "@types/helmet": "0.0.47",
       "@types/mongoose": "^5.7.21",
       "@types/node": "^14.0.6",
+      "@types/react-router-dom": "^5.1.5",
       "concurrently": "^5.2.0",
       "module-alias": "^2.2.2",
       "nodemon": "^2.0.4",
