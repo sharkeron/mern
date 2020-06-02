@@ -10,7 +10,7 @@ declare namespace Request {
 
 export const useHttp = () => {
    const [loading, setLoading] = useState(false);
-   const [error, setError] = useState(null);
+   const [error, setError] = useState<null | string>(null);
 
    const request = useCallback(async <Body>(
       url: string,
@@ -50,7 +50,7 @@ export const useHttp = () => {
       }
    }, []);
 
-   const clearError = () => setError(null);
+   const clearError = useCallback(() => setError(null), []);
 
    return {
       loading,

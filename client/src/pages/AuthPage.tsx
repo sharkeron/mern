@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useHttp} from '../hooks/http.hook';
+import {useMessage} from '../hooks/message.hook';
 
 interface authPageInterface {
     email: string;
@@ -8,12 +9,18 @@ interface authPageInterface {
 }
 
 export const AuthPage = () => {
-    const {loading, request, error} = useHttp();
+    const message = useMessage();
+    const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState<authPageInterface>({
         email: '',
         password: '',
         remember: false,
     });
+
+    useEffect(() => {
+        message(error as string);
+        clearError();
+    }, [error, message, clearError]);
 
     const changeHandler = (event: React.FormEvent<HTMLInputElement>) => {
         setForm({...form, [event.currentTarget.name]: event.currentTarget.value});
@@ -23,9 +30,19 @@ export const AuthPage = () => {
         try {
             const data = await request('/api/auth/sign_up', 'POST', {...form});
 
-            console.log(data);
+            message(data.message);
         } catch (e) {
+            console.warn(e);
+        }
+    };
 
+    const loginHandler = async () => {
+        try {
+            const data = await request('/api/auth/sign_in', 'POST', {...form});
+
+            message(data.message);
+        } catch (e) {
+            console.warn(e);
         }
     };
 
@@ -84,7 +101,8 @@ export const AuthPage = () => {
                     <div className="card-action">
                         <button className="btn yellow darken-4 mr-1"
                                 type="button"
-                                disabled={loading}>
+                                disabled={loading}
+                                onClick={loginHandler}>
                             Sign in
                         </button>
 

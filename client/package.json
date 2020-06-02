@@ -35,6 +35,7 @@
       ]
    },
    "devDependencies": {
+      "@types/materialize-css": "^1.0.7",
       "node-sass": "^4.14.1"
    }
 }
