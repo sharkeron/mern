@@ -15,7 +15,7 @@ const {config} = require('node-config-ts');
 
 export const signUpController = async (req: Request, res: Response) => {
    try {
-      if (isAuthValiddationErrorsExist(req, res)) {
+      if (isAuthValidationErrorsExist(req, res)) {
          return;
       }
 
@@ -48,7 +48,7 @@ export const signUpController = async (req: Request, res: Response) => {
 
 export const signInController = async (req: Request, res: Response) => {
    try {
-      if (isAuthValiddationErrorsExist(req, res)) {
+      if (isAuthValidationErrorsExist(req, res)) {
          return;
       }
 
@@ -63,8 +63,7 @@ export const signInController = async (req: Request, res: Response) => {
          return;
       }
 
-      const hashedPassword = await hash(password, 12);
-      const isMatch = await compare(hashedPassword, user.password);
+      const isMatch = await compare(password, user.password);
 
       if (!isMatch) {
          res.status(400)
@@ -88,15 +87,15 @@ export const signInController = async (req: Request, res: Response) => {
    }
 };
 
-function isAuthValiddationErrorsExist(req: Request, res: Response) {
+function isAuthValidationErrorsExist(req: Request, res: Response) {
    const errors = validationResult(req);
 
    if (!errors.isEmpty()) {
       res.status(400)
-         .json({
-                  errors: errors.array(),
-                  message: 'Invalid data',
-               });
+          .json({
+             errors: errors.array(),
+             message: 'Invalid data',
+          });
 
       return true;
    }
