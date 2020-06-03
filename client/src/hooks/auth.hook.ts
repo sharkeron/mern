@@ -3,12 +3,14 @@ import {useCallback, useEffect, useState} from 'react';
 interface AuthHookInterface {
    token: string | null;
    userId: string | null;
+   ready: boolean;
    login: (jwtToken: string, id: string) => void;
    logout: () => void;
 }
 
 export const useAuth = (): AuthHookInterface => {
    const [token, setToken] = useState<null | string>(null);
+   const [ready, setReady] = useState<boolean>(false);
    const [userId, setUserId] = useState<null | string>(null);
 
    const storageName = 'userData';
@@ -40,11 +42,14 @@ export const useAuth = (): AuthHookInterface => {
 
          login(parsedAuthData.token, parsedAuthData.userId);
       }
+
+      setReady(true);
    }, [login]);
 
    return {
       login,
       logout,
+      ready,
       token,
       userId,
    };

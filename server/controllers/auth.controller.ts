@@ -8,7 +8,7 @@ import {errorHandler500} from '../utils/errorHandler';
 interface AuthRequestBodyInterface {
     email: string;
     password: string;
-    rememberMe?: boolean;
+    remember?: boolean;
 }
 
 const {config} = require('node-config-ts');
@@ -52,7 +52,7 @@ export const SignInCtrl = async (req: Request, res: Response) => {
             return;
         }
 
-        const {email, password, rememberMe} = req.body as AuthRequestBodyInterface;
+        const {email, password, remember} = req.body as AuthRequestBodyInterface;
 
         const user = await User.findOne({email});
 
@@ -73,7 +73,7 @@ export const SignInCtrl = async (req: Request, res: Response) => {
         }
 
         const token = await sign({userId: user.id}, config.jwtSecret, {
-            expiresIn: rememberMe ? '30d' : '1h',
+            expiresIn: remember ? '30d' : '1h',
         });
 
         res.json({

@@ -12,10 +12,10 @@ export const useHttp = () => {
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState<null | string>(null);
 
-   const request = useCallback(async <Body>(
+   const request = useCallback(async (
       url: string,
       method: Request.RequestMethodsType = 'GET',
-      body?: {},
+      body?: {} | null,
       headers: Partial<Request.Headers> = {},
    ) => {
       setLoading(true);
@@ -30,7 +30,7 @@ export const useHttp = () => {
             url,
             {
                method,
-               body: body as string | undefined,
+               body: body as string | null,
                headers,
             },
          );
