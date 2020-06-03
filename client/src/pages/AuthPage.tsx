@@ -24,6 +24,10 @@ export const AuthPage = () => {
         clearError();
     }, [error, message, clearError]);
 
+    useEffect(() => {
+        window.M.updateTextFields();
+    }, []);
+
     const changeHandler = (event: React.FormEvent<HTMLInputElement>) => {
         setForm({...form, [event.currentTarget.name]: event.currentTarget.value});
     };
@@ -67,8 +71,7 @@ export const AuthPage = () => {
                                        name="email"
                                        onChange={changeHandler}/>
 
-                                <label htmlFor="email"
-                                       className="active">
+                                <label htmlFor="email">
                                     Email
                                 </label>
                             </div>
@@ -81,8 +84,7 @@ export const AuthPage = () => {
                                        name="password"
                                        onChange={changeHandler}/>
 
-                                <label htmlFor="email"
-                                       className="active">
+                                <label htmlFor="email">
                                     Password
                                 </label>
                             </div>
@@ -102,7 +104,7 @@ export const AuthPage = () => {
 
                     <div className="card-action">
                         <button className="btn yellow darken-4 mr-1"
-                                type="button"
+                                type="submit"
                                 disabled={loading}
                                 onClick={loginHandler}>
                             Sign in
