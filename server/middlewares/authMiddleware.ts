@@ -9,7 +9,7 @@ export const AuthMiddleware = (req: Request, res: Response, next: NextFunction) 
    }
 
    try {
-      const token = (req.headers.authorization as string)?.split(' ')[1];
+      const token = (req.headers.authorization as string).split(' ')[1];
 
       if (!token) {
          invalidAuthentication(res);

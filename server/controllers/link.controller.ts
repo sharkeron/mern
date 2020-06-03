@@ -16,6 +16,8 @@ export const GenerateCtrl = async (req: Request, res: Response) => {
 
       if (existing) {
          res.json({link: existing});
+
+         return;
       }
 
       const to = `${baseUrl}/t/${code}`;
@@ -24,7 +26,7 @@ export const GenerateCtrl = async (req: Request, res: Response) => {
                                code,
                                to,
                                from,
-                               owner: req.user?.userId,
+                               owner: req.user.userId,
                             },
       );
 
@@ -39,7 +41,7 @@ export const GenerateCtrl = async (req: Request, res: Response) => {
 
 export const GetLinksCtrl = async (req: Request, res: Response) => {
    try {
-      const links = await Link.find({owner: req.user?.userId});
+      const links = await Link.find({owner: req.user.userId});
 
       res.json(links);
    } catch (e) {

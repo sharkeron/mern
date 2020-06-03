@@ -1,10 +1,14 @@
 @import '~materialize-css/sass/materialize';
 
 .mr-1 {
-   margin-right : 0.75rem;
+   margin-right : 0.75rem !important;
 }
 
 .px-1 {
-   padding-right : 0.75rem;
-   padding-left  : 0.75rem;
+   padding-right : 0.75rem !important;
+   padding-left  : 0.75rem !important;
+}
+
+.pt-3 {
+   padding-top : 2rem !important;
 }

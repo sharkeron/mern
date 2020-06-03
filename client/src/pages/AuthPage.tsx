@@ -69,6 +69,7 @@ export const AuthPage = () => {
                                        className="yellow-input"
                                        id="email"
                                        name="email"
+                                       value={form.email}
                                        onChange={changeHandler}/>
 
                                 <label htmlFor="email">
@@ -82,6 +83,7 @@ export const AuthPage = () => {
                                        className="yellow-input"
                                        id="password"
                                        name="password"
+                                       value={form.password}
                                        onChange={changeHandler}/>
 
                                 <label htmlFor="email">
@@ -93,6 +95,7 @@ export const AuthPage = () => {
                                 <input type="checkbox"
                                        className="filled-in"
                                        name="remember"
+                                       checked={form.remember}
                                        onChange={changeHandler}/>
 
                                 <span className="white-text">
