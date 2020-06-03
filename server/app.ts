@@ -3,7 +3,8 @@ import express, {Express} from 'express';
 import helmet from 'helmet';
 import 'module-alias/register';
 import mongoose from 'mongoose';
-import authRoute from './routes/auth.route';
+import AuthRoute from './routes/auth.route';
+import LinkRoute from './routes/link.route';
 
 const {config} = require('node-config-ts');
 
@@ -16,7 +17,8 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/auth', authRoute);
+app.use('/api/auth', AuthRoute);
+app.use('/api/link', LinkRoute);
 
 async function startConnect() {
    try {

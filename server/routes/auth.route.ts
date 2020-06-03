@@ -1,6 +1,6 @@
 import {IRouter, Router} from 'express';
 import {check} from 'express-validator';
-import {signInController, signUpController} from '../controllers/auth.controller';
+import {SignInCtrl, SignUpCtrl} from '../controllers/auth.controller';
 
 const authRoute: IRouter = Router();
 
@@ -12,7 +12,7 @@ authRoute.post(
       check('password', 'Min length of password is 6 char')
          .isLength({min: 6}),
    ],
-   signUpController,
+   SignUpCtrl,
 );
 
 authRoute.post(
@@ -24,7 +24,7 @@ authRoute.post(
       check('password', 'Password is required')
          .exists(),
    ],
-   signInController,
+   SignInCtrl,
 );
 
 export default authRoute;

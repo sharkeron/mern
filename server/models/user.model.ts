@@ -1,10 +1,10 @@
-//import mongoose, {Schema, Types, Document} from 'mongoose';
 import mongoose, {Document, Schema} from 'mongoose';
+import {ILink} from './link.model';
 
-interface IUser extends Document {
+export interface IUser extends Document {
    email: string;
    password: string;
-   //links: Link['link'];
+   links: ILink['_id'];
 }
 
 const UserSchema: Schema = new Schema(
@@ -18,12 +18,12 @@ const UserSchema: Schema = new Schema(
          type: String,
          required: true,
       },
-      //links: [
-      //   {
-      //      type: Types.ObjectId,
-      //      ref: 'Link',
-      //   },
-      //],
+      links: [
+         {
+            type: Schema.Types.ObjectId,
+            ref: 'Link',
+         },
+      ],
    },
 );
 
