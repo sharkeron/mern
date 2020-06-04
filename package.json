@@ -33,6 +33,7 @@
       "helmet": "^3.22.0",
       "jsonwebtoken": "^8.5.1",
       "materialize-css": "^1.0.0-rc.2",
+      "module-alias": "^2.2.2",
       "mongoose": "^5.9.16",
       "node-config-ts": "^3.0.4",
       "react-router-dom": "^5.2.0",
@@ -51,7 +52,6 @@
       "@types/shortid": "0.0.29",
       "concurrently": "^5.2.0",
       "cross-env": "^7.0.2",
-      "module-alias": "^2.2.2",
       "nodemon": "^2.0.4",
       "ts-node-dev": "^1.0.0-pre.44",
       "typescript": "^3.9.3"
