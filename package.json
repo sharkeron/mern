@@ -4,14 +4,15 @@
    "description": "MERN application. Service for shortening links.",
    "main": "server/app.ts",
    "scripts": {
-      "start": "cross-env NODE_ENV=production ts-node server/app.ts",
+      "start": "cross-env NODE_ENV=production node server/build/app.js",
       "server": "nodemon server/app.ts",
       "client": "npm run start --prefix client",
       "dev": "concurrently \"npm run server\" \"npm run client\"",
+      "server:build": "tsc",
       "client:install": "npm install --prefix client",
       "client:build": "npm run build --prefix client",
       "postinstall": "node-config-ts",
-      "heroku-postbuild": "npm run client:install && npm run client:build"
+      "heroku-postbuild": "npm run client:install && npm run client:build && npm run server:build"
    },
    "keywords": [
       "mern",
