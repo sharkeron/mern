@@ -1,7 +1,6 @@
 import {NextFunction, Request, Response} from 'express';
 import {verify} from 'jsonwebtoken';
-
-const {config} = require('node-config-ts');
+import {env} from '../../config/keys';
 
 export const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
    if (req.method === 'OPTIONS') {
@@ -17,7 +16,7 @@ export const AuthMiddleware = (req: Request, res: Response, next: NextFunction) 
          return;
       }
 
-      const decoded = verify(token, config.jwtSecret);
+      const decoded = verify(token, env.jwtSecret);
 
       req.user = decoded as { userId: string; iat: number; exp: number; };
       next();

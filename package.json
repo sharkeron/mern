@@ -11,7 +11,6 @@
       "server:build": "tsc",
       "client:install": "npm install --prefix client",
       "client:build": "npm run build --prefix client",
-      "postinstall": "node-config-ts",
       "heroku-postbuild": "npm run client:install && npm run client:build && npm run server:build"
    },
    "keywords": [
