@@ -13,7 +13,7 @@ interface AuthRequestBodyInterface {
 
 const {config} = require('node-config-ts');
 
-export const SignUpCtrl = async (req: Request, res: Response): void => {
+export const SignUpCtrl = async (req: Request, res: Response): Promise<void> => {
    try {
       if (isAuthValidationErrorsExist(req, res)) {
          return;
@@ -46,7 +46,7 @@ export const SignUpCtrl = async (req: Request, res: Response): void => {
     }
 };
 
-export const SignInCtrl = async (req: Request, res: Response): void => {
+export const SignInCtrl = async (req: Request, res: Response): Promise<void> => {
    try {
       if (isAuthValidationErrorsExist(req, res)) {
          return;
@@ -86,7 +86,7 @@ export const SignInCtrl = async (req: Request, res: Response): void => {
     }
 };
 
-function isAuthValidationErrorsExist(req: Request, res: Response): void {
+function isAuthValidationErrorsExist(req: Request, res: Response): boolean {
    const errors = validationResult(req);
 
    if (!errors.isEmpty()) {

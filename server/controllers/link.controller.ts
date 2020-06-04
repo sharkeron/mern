@@ -5,7 +5,7 @@ import {errorHandler500} from '../utils/errorHandler';
 
 const {config} = require('node-config-ts');
 
-export const GenerateCtrl = async (req: Request, res: Response): void => {
+export const GenerateCtrl = async (req: Request, res: Response): Promise<void> => {
    try {
 
       const {baseUrl} = config;
@@ -39,7 +39,7 @@ export const GenerateCtrl = async (req: Request, res: Response): void => {
    }
 };
 
-export const GetLinksCtrl = async (req: Request, res: Response): void => {
+export const GetLinksCtrl = async (req: Request, res: Response): Promise<void> => {
    try {
       const links = await Link.find({owner: req.user.userId});
 
@@ -49,7 +49,7 @@ export const GetLinksCtrl = async (req: Request, res: Response): void => {
    }
 };
 
-export const GetLinkCtrl = async (req: Request, res: Response): void => {
+export const GetLinkCtrl = async (req: Request, res: Response): Promise<void> => {
    try {
       const link = await Link.findById(req.params.id);
 
