@@ -6,11 +6,11 @@
    "scripts": {
       "start": "cross-env NODE_ENV=production node server/build/app.js",
       "server": "nodemon server/app.ts",
-      "client": "npm run start --prefix client",
+      "client": "npm --prefix ./client run start",
       "dev": "concurrently \"npm run server\" \"npm run client\"",
       "server:build": "tsc",
-      "client:install": "npm install --prefix client",
-      "client:build": "npm run build --prefix client",
+      "client:install": "npm --prefix ./client install",
+      "client:build": "npm --prefix ./client run build",
       "heroku-postbuild": "npm run client:install && npm run client:build && npm run server:build"
    },
    "keywords": [
