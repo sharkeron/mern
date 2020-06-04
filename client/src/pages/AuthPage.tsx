@@ -29,7 +29,9 @@ export const AuthPage = () => {
     }, []);
 
     const changeHandler = (event: React.FormEvent<HTMLInputElement>) => {
-        setForm({...form, [event.currentTarget.name]: event.currentTarget.value});
+        const value = event.currentTarget.type === 'checkbox' ? event.currentTarget.checked : event.currentTarget.value;
+
+        setForm({...form, [event.currentTarget.name]: value});
     };
 
     const registerHandler = async () => {

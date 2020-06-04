@@ -4,6 +4,8 @@ declare namespace Request {
    export type RequestMethodsType = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
    export interface Headers {
+      Authorization?: string;
+
       [header: string]: any;
    }
 }
