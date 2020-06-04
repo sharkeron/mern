@@ -13,10 +13,10 @@ const {config} = require('node-config-ts');
 const PORT: number = config.port;
 const MONGO_URI: string = config.mongoUri;
 
-console.log(PORT);
-console.log(MONGO_URI);
-console.log(config.jwtSecret);
-console.log(config.baseUrl);
+console.log(`port ${PORT}`);
+console.log(`mongo ${MONGO_URI}`);
+console.log(`secret ${config.jwtSecret}`);
+console.log(`base ${config.baseUrl}`);
 
 const app: Express = express();
 
