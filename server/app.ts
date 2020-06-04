@@ -5,6 +5,7 @@ import 'module-alias/register';
 import mongoose from 'mongoose';
 import AuthRoute from './routes/auth.route';
 import LinkRoute from './routes/link.route';
+import RedirectRoute from './routes/redirect.route';
 
 const {config} = require('node-config-ts');
 
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use('/api/auth', AuthRoute);
 app.use('/api/link', LinkRoute);
+app.use('/t', RedirectRoute);
 
 async function startConnect() {
    try {
