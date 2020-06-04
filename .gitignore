@@ -2,6 +2,7 @@
 node_modules
 /dist
 build
+/prod
 
 # local env files
 .env.local

@@ -27,10 +27,10 @@ app.use('/api/link', LinkRoute);
 app.use('/t', RedirectRoute);
 
 if (process.env.NODE_ENV === 'production') {
-   app.use('/', express.static(path.join(__dirname, '..', '..', 'client')));
+   app.use('/', express.static(path.join(__dirname, 'client')));
 
    app.get('*', (_, res: Response): void => {
-      res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'build', 'index.html'));
+      res.sendFile(path.resolve(__dirname, 'client', 'index.html'));
    });
 }
 
