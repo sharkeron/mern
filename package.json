@@ -4,7 +4,7 @@
    "description": "MERN application. Service for shortening links.",
    "main": "server/app.ts",
    "scripts": {
-      "start": "cross-env NODE_ENV=production node server/build/app.js",
+      "start": "cross-env NODE_ENV=production node prod/app.js",
       "server": "nodemon server/app.ts",
       "client": "npm --prefix ./client run start",
       "dev": "concurrently \"npm run server\" \"npm run client\"",
