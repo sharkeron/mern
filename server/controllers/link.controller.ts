@@ -1,14 +1,13 @@
 import {Request, Response} from 'express';
 import {generate} from 'shortid';
+import {env} from '../../config/keys';
 import Link from '../models/link.model';
 import {errorHandler500} from '../utils/errorHandler';
-
-const {config} = require('node-config-ts');
 
 export const GenerateCtrl = async (req: Request, res: Response): Promise<void> => {
    try {
 
-      const {baseUrl} = config;
+      const {baseUrl} = env;
       const {from} = req.body as { from: string; };
 
       const code = generate();

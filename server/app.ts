@@ -4,19 +4,17 @@ import helmet from 'helmet';
 import 'module-alias/register';
 import mongoose from 'mongoose';
 import path from 'path';
+import {env} from '../config/keys';
 import AuthRoute from './routes/auth.route';
 import LinkRoute from './routes/link.route';
 import RedirectRoute from './routes/redirect.route';
 
-const {config} = require('node-config-ts');
-
-const PORT: number = config.port;
-const MONGO_URI: string = config.mongoUri;
+const {port: PORT, mongoUri: MONGO_URI} = env;
 
 console.log(`port ${PORT}`);
 console.log(`mongo ${MONGO_URI}`);
-console.log(`secret ${config.jwtSecret}`);
-console.log(`base ${config.baseUrl}`);
+console.log(`secret ${env.jwtSecret}`);
+console.log(`base ${env.baseUrl}`);
 
 const app: Express = express();
 

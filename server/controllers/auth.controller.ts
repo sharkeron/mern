@@ -2,6 +2,7 @@ import {compare, hash} from 'bcryptjs';
 import {Request, Response} from 'express';
 import {validationResult} from 'express-validator';
 import {sign} from 'jsonwebtoken';
+import {env} from '../../config/keys';
 import User from '../models/user.model';
 import {errorHandler500} from '../utils/errorHandler';
 
@@ -10,8 +11,6 @@ interface AuthRequestBodyInterface {
     password: string;
     remember?: boolean;
 }
-
-const {config} = require('node-config-ts');
 
 export const SignUpCtrl = async (req: Request, res: Response): Promise<void> => {
    try {
@@ -72,9 +71,9 @@ export const SignInCtrl = async (req: Request, res: Response): Promise<void> => 
             return;
         }
 
-        const token = await sign({userId: user.id}, config.jwtSecret, {
-            expiresIn: remember ? '30d' : '1h',
-        });
+      const token = await sign({userId: user.id}, env.jwtSecret, {
+         expiresIn: remember ? '30d' : '1h',
+      });
 
         res.json({
             token,
