@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import 'module-alias/register';
 import mongoose from 'mongoose';
 import path from 'path';
-import {env} from '../config/keys';
+import {env} from './config/keys';
 import AuthRoute from './routes/auth.route';
 import LinkRoute from './routes/link.route';
 import RedirectRoute from './routes/redirect.route';

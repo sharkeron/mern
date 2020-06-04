@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import {generate} from 'shortid';
-import {env} from '../../config/keys';
+import {env} from '../config/keys';
 import Link from '../models/link.model';
 import {errorHandler500} from '../utils/errorHandler';
 

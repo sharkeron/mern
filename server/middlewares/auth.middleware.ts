@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from 'express';
 import {verify} from 'jsonwebtoken';
-import {env} from '../../config/keys';
+import {env} from '../config/keys';
 
 export const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
    if (req.method === 'OPTIONS') {

@@ -2,7 +2,7 @@ import {compare, hash} from 'bcryptjs';
 import {Request, Response} from 'express';
 import {validationResult} from 'express-validator';
 import {sign} from 'jsonwebtoken';
-import {env} from '../../config/keys';
+import {env} from '../config/keys';
 import User from '../models/user.model';
 import {errorHandler500} from '../utils/errorHandler';
 
