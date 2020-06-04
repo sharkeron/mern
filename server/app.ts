@@ -1,8 +1,9 @@
 import cors from 'cors';
-import express, {Express} from 'express';
+import express, {Express, Response} from 'express';
 import helmet from 'helmet';
 import 'module-alias/register';
 import mongoose from 'mongoose';
+import path from 'path';
 import AuthRoute from './routes/auth.route';
 import LinkRoute from './routes/link.route';
 import RedirectRoute from './routes/redirect.route';
@@ -21,6 +22,14 @@ app.use(express.json());
 app.use('/api/auth', AuthRoute);
 app.use('/api/link', LinkRoute);
 app.use('/t', RedirectRoute);
+
+if (process.env.NODE_ENV === 'production') {
+   app.use('/', express.static(path.join(__dirname, 'client')));
+
+   app.get('*', (_, res: Response): void => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+   });
+}
 
 async function startConnect() {
    try {

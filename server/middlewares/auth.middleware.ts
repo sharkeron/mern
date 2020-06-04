@@ -26,7 +26,7 @@ export const AuthMiddleware = (req: Request, res: Response, next: NextFunction) 
    }
 };
 
-function invalidAuthentication(res: Response) {
+function invalidAuthentication(res: Response): void {
    res.status(401)
       .json({message: 'Invalid authentication'});
 

@@ -13,17 +13,17 @@ interface AuthRequestBodyInterface {
 
 const {config} = require('node-config-ts');
 
-export const SignUpCtrl = async (req: Request, res: Response) => {
-    try {
-        if (isAuthValidationErrorsExist(req, res)) {
-            return;
-        }
+export const SignUpCtrl = async (req: Request, res: Response): void => {
+   try {
+      if (isAuthValidationErrorsExist(req, res)) {
+         return;
+      }
 
-        const {email, password} = req.body as AuthRequestBodyInterface;
+      const {email, password} = req.body as AuthRequestBodyInterface;
 
-        const candidate = await User.findOne({email});
+      const candidate = await User.findOne({email});
 
-        if (candidate) {
+      if (candidate) {
             res.status(400)
                 .json({message: `User existed`});
 
@@ -46,17 +46,17 @@ export const SignUpCtrl = async (req: Request, res: Response) => {
     }
 };
 
-export const SignInCtrl = async (req: Request, res: Response) => {
-    try {
-        if (isAuthValidationErrorsExist(req, res)) {
-            return;
-        }
+export const SignInCtrl = async (req: Request, res: Response): void => {
+   try {
+      if (isAuthValidationErrorsExist(req, res)) {
+         return;
+      }
 
-        const {email, password, remember} = req.body as AuthRequestBodyInterface;
+      const {email, password, remember} = req.body as AuthRequestBodyInterface;
 
-        const user = await User.findOne({email});
+      const user = await User.findOne({email});
 
-        if (!user) {
+      if (!user) {
             res.status(400)
                 .json({message: `User not found`});
 
@@ -86,17 +86,17 @@ export const SignInCtrl = async (req: Request, res: Response) => {
     }
 };
 
-function isAuthValidationErrorsExist(req: Request, res: Response) {
-    const errors = validationResult(req);
+function isAuthValidationErrorsExist(req: Request, res: Response): void {
+   const errors = validationResult(req);
 
-    if (!errors.isEmpty()) {
-        res.status(400)
-            .json({
-                errors: errors.array(),
-                message: 'Invalid data',
-            });
+   if (!errors.isEmpty()) {
+      res.status(400)
+         .json({
+                  errors: errors.array(),
+                  message: 'Invalid data',
+               });
 
-        return true;
+      return true;
     }
 
     return false;
