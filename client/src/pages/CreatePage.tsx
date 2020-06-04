@@ -20,7 +20,7 @@ export const CreatePage = () => {
     const pressHandler = async (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             try {
-                const data = await request<{ name: string; }>(
+                const data = await request(
                         '/api/link/generate',
                         'POST',
                         {from: link},
